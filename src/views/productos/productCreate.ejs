@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head.ejs') %>
+    <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href=/stylesheets/productCreate.css>
+    <link rel="stylesheet" href=/stylesheets/footer.css>
+    <script src="/javascripts/validations/productCreate-validation.js"></script>
+    <title>Reeadni Creacion de producto</title>
+</head>
+
+<body>
+  <header>
+    <!--------- BARRA NAVEGADOR CELULAR Y TABLET ---------->
+    <%- include('../partials/headerMobile.ejs') %> 
+    <!--------- BARRA NAVEGADOR DESKTOP ---------->
+    <%- include('../partials/headerDesktop.ejs') %> 
+  </header>
+
+  <div class="container productCreate">
+    <!-- en el action ponemos la ruta del formulario que va capturar los datos, en enctype es para que los datos viajen-->
+    <form action="/administrar/productCreate" method="POST" class="formulario" >
+      <div class="container titulo">
+        <h2 class="products-title">Formulario<br> Creación de productos</h2>
+      </div>
+      <div class="errores">
+        <h5>
+        </h5>
+      </div>
+      <div class="row nameProduct">
+        <input type="text" id="name" name="name" class="formulario__input">
+        <label for="name" class="formulario__label">Nombre del producto</label>        
+      </div>
+      <div class="row description">
+        <label for="description" class="" name="description">Descripción:</label>
+        <input name="description" id="description" class="formulario__textArea"></input>
+      </div>
+      <div class="row priceProduct">
+        <input type="number" id="priceAnt" name="priceAnt" class="formulario__input">
+        <label for="priceAnt" class="formulario__label">Precio anterior del producto</label>
+      </div>
+      <div class="row priceProduct">
+        <input type="number" id="price" name="price" class="formulario__input">
+        <label for="price" class="formulario__label">Precio actual del producto</label>
+      </div>
+      <div class="row discount">
+        <input type="number" id="discount" name="discount" class="formulario__input">
+        <label for="discount" class="formulario__label">Descuento</label>
+      </div>
+      <div class="row discount">
+        <input type="number" id="ranking" name="ranking" class="formulario__input" min="1" max="5">
+        <label for="ranking" class="formulario__label">Valor en estrellas</label>
+      </div>
+      <div class="row nameProduct">
+        <input type="text" id="color" name="color" class="formulario__input">
+        <label for="color" class="formulario__label">Color</label>
+      </div>
+
+      <div class="row category">
+        <label for="category">Categorías</label>
+        <select name="category" id="category" class="formulario__select">
+          <option value="">-- Selecciona --</option>
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
+          <option value="Niño">Niño</option>
+        </select>
+      </div>
+
+      <div class="row category">
+        <label for="size">Tallas</label>
+        <select name="size" id="size" class="formulario__select">
+          <option value="">-- Selecciona --</option>
+          <option value="1">25</option>
+          <option value="2">26</option>
+          <option value="3">27</option>
+          <option value="4">28</option>
+          <option value="5">29</option>
+          <option value="6">30</option>
+          <option value="7">31</option>
+          <option value="8">32</option>
+          <option value="9">33</option>
+          <option value="10">34</option>
+          <option value="11">35</option>
+          <option value="12">36</option>
+          <option value="13">37</option>
+          <option value="14">38</option>
+          <option value="15">39</option>
+          <option value="16">40</option>
+          <option value="17">41</option>
+          <option value="18">42</option>
+          <option value="19">43</option>
+          <option value="20">44</option>
+        </select>
+      </div>
+
+      <div class="row category">
+        <label for="market">Marcas</label>
+        <select name="market" id="market" class="formulario__select">
+          <option value="">-- Selecciona --</option>
+          <option value=1>Reebok</option>
+          <option value=2>Adidas</option>
+          <option value=3>Nike</option>
+        </select>
+      </div>
+
+      <div class="add-new-photo first" id="add-photo">
+        <input type="file" id="imagen" name="imagen" class="formulario__input">
+        <button type="button" id="boton_add" class="boton_add">
+          <div>
+            <i class="fa-solid fa-image"></i>
+          </div>
+          Agrega una imagen
+        </button>
+      </div>
+
+      <div class="button saveProduct">
+          <button type="submit" class="formulario__submit">Guardar producto</button>
+      </div>
+
+    </form>
+  </div>
+
+  <script src="/javascripts/productCreate.js"></script>
+
+  <footer class="container-footer">
+    <%- include('../partials/footer.ejs') %> 
+  </footer>
+</body>
+
+</html>

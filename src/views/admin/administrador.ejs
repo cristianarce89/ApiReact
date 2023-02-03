@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs') %>
+        <link href="./stylesheets/header.css" rel="stylesheet">
+        <link href="./stylesheets/footer.css" rel="stylesheet">
+        <link href="./stylesheets/admin/administrador.css" rel="stylesheet">
+        <title>Administrador Productos</title>
+</head>
+
+<body>
+    <header>
+        <!--------- BARRA NAVEGADOR CELULAR Y TABLET ---------->
+        <%- include('../partials/headerMobile.ejs') %>
+            <!--------- BARRA NAVEGADOR DESKTOP ---------->
+            <%- include('../partials/headerDesktop.ejs') %>
+    </header>
+    <main>
+
+        <!-- con este console.log me doy cuenta si esta llamando la tabla en la base de datos y sus filas, como resultado da:[object SequelizeInstance:Product] por cada fila -->
+        <!-- esto va dentro de simbolos ejs 
+        <console.log('Esta es una prueba de renderizar el Administrador' + products)  -->
+
+        <div class="titulo">
+            <h1>Administrador de ProductoS</h1>
+            <a href="/" class="logo-header-desk1" target="blank">
+                <img src="https://i.postimg.cc/k4pnwh96/logo2.jpg" alt="Logo" class="logo">
+            </a>
+        </div>
+
+        <div class="containerBottons">
+            <div class="container-boton">
+                <a href="/administrar/productCreate">
+                    <button type="button" class="crear boton"><i class="fa-solid fa-circle-plus"></i> Agregar
+                        Producto</button>
+                </a>
+            </div>
+            <div class="container-boton">
+                <a href="/users">
+                    <button type="button" class="crear boton">Administrar usuarios</button>
+                </a>
+            </div>
+        </div>
+
+        <table class=" table">
+            <thead class="table-primary">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Ver</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Borrar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- aca va el forEach -->
+                <% products.forEach(productsAll => { %> 
+                        <td>
+                            <%= productsAll.idProduct%>
+                        </td>
+                        <td>
+                            <%= productsAll.name%>                        
+                        </td>
+                        <td>
+                            <%= productsAll.category%>                
+                        </td>
+                        <td><a href="/administrar/productDetail/<%= productsAll.idProduct%> ">
+                                <i class="fa-solid fa-eye"></i>
+                            </a></td>
+                        <td>
+                            <!-- <form action="/administrar/productEdit" method="POST" class="formulario" > -->
+                                <a href="/administrar/productEdit/<%= productsAll.idProduct%>">
+                                <!-- <button type="submit"> -->
+                                <i class="fa-solid fa-pen"></i>
+                                </a>
+                                <!-- </button> -->
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/administrar/delete/<%= productsAll.idProduct%>?_method=delete" method="POST" class="formulario" >
+                                <button type="submit">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+    </main>
+
+    <footer class="container-footer">
+        <%- include('../partials/footer.ejs') %>
+    </footer>
+
+</body>
+
+</html>
